@@ -1,0 +1,120 @@
+.nav {
+  position: relative;
+  background-color: var(--primary-bg-color);
+  border-bottom: var(--main-border);
+  height: 40px;
+  margin-bottom: 40px;
+}
+
+.nav .container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container .main-links{
+  display: flex;
+  column-gap: 15px;
+  list-style: none;
+}
+
+.main-links > li {
+  cursor: pointer;
+  color: var(--primary-text-color);
+  transition: var(--main-transition);
+}
+
+.main-links > li:hover {
+  color: var(--primary-color);
+}
+
+.main-links > li .drop-menu {
+  background-color: var(--primary-bg-color);
+  box-shadow: var(--primary-box-shadow);
+  position: absolute;
+  left: 20px;
+  top: 25px;
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  opacity: 0;
+  z-index: -10;
+  padding: 10px 20px;
+  transition: var(--main-transition);
+}
+
+.drop-menu .sub-links {
+  list-style: none;
+}
+
+.sub-links li {
+  color: var(--secondary-text-color);
+  font-weight: 600;
+  cursor: pointer;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  transition: var(--main-transition);
+}
+
+.sub-links li:not(:last-of-type) {
+  border-bottom: var(--main-border);
+}
+
+.sub-links li:hover {
+  color: var(--primary-color);
+  transform: translateX(10px);
+}
+
+.sub-links li i {
+  margin-right: 5px;
+}
+
+.nav .mobile-menu {
+  color: var(--primary-text-color);
+  cursor: pointer;
+  display: none;
+}
+
+.nav .sort-box {
+  position: relative;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+  overflow: hidden;
+  border: var(--main-border);
+  color: var(--primary-text-color);
+  background-color: var(--input-bg-color);
+  border-radius: var(--main-border-radius);
+}
+
+.sort-box:focus-within {
+  box-shadow: var(--secondary-box-shadow);
+}
+
+.sort-box label {
+  font-weight: 700;
+  margin-right: 5px;
+}
+
+.sort-box select {
+  background-color: var(--input-bg-color);
+  color: var(--primary-text-color);
+  padding-right: 5px;
+  border: none;
+  outline: none;
+}
+
+
+@media (max-width: 992px) {
+  .nav .main-links {
+    display: none;
+  }
+  .nav .mobile-menu {
+    display: block;
+  }
+}
+

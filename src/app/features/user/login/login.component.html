@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="left-side">
+    <div class="login-box">
+      <p class="title">Welcome back.</p>
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div class="primary-input">
+          <div class="input-box">
+            <input formControlName="email" type="email" id="email" placeholder=" ">
+            <label for="email">Email</label>
+          </div>
+        </div>
+        <div class="primary-input">
+          <div class="input-box">
+            <input formControlName="password" type="password" id="password" placeholder=" ">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="error-box">{{errorMessage}}</div>
+        <div class="options">
+          <div class="remember">
+            <input type="checkbox" id="remember">
+            <label for="remember">Remember me</label>
+          </div>
+          <a class="forgot" href="">Forgot password?</a>
+        </div>
+        <button pRipple class="primary-btn" type="submit">Sign in</button>
+      </form>
+      <p class="register">
+        Don't have an account yet?
+        <a routerLink="/register">Sign up</a>
+      </p>
+      <div class="or"></div>
+      <div pRipple class="other-way">
+        <img src="images/icons/google.png" alt="google">
+        Sign in with Google
+      </div>
+      <div pRipple class="other-way">
+        <img src="images/icons/facebook.png" alt="facebook">
+        Sign in with Facebook
+      </div>
+    </div>
+  </div>
+
+  <div class="right-side">
+    <img src="images/visuals/login.png" alt="login">
+  </div>
+</div>
+
+<div *ngIf="loading" class="overlay">
+  <div class="spinner">
+    <i class="fa-solid fa-sync fa-spin"></i> Please wait...
+  </div>
+</div>

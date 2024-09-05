@@ -1,0 +1,38 @@
+<div class="container">
+  <ng-container *ngIf="ordersObs$ | async as ordersList">
+    <div *ngIf="!ordersList.orders.length" class="no-orders">
+      <img src="images/visuals/empty-box.png" alt="empty-box">
+      <div>
+        You currently have no orders. Your orders will be displayed here once you make a purchase |
+        <a routerLink="/products-list">Shop now</a>
+      </div>
+    </div>
+
+    <div *ngIf="ordersList.orders.length" class="table-box">
+      <table>
+        <thead>
+          <th>ORDER ID</th>
+          <th>ORDER DATE</th>
+          <th>TOTAL COST</th>
+          <th>SAVINGS</th>
+          <th>ORDER STATUS</th>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let order of ordersList.orders">
+            <td>{{order._id}}</td>
+            <td>{{order.date | date:'fullDate'}}</td>
+            <td>{{order.totalCost.toFixed(2)}}</td>
+            <td>{{order.savings.toFixed(2)}}</td>
+            <td>
+              <span class="badge" [class]="order.status.toLowerCase()">
+                <i *ngIf="order.status === 'Pending'" class="fa-solid fa-cog fa-spin"></i>
+                {{order.status}}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-container>
+</div>

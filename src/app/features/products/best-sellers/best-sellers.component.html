@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="products-list">
+    <ng-container *ngIf="loading">
+      <ng-container *ngFor="let _ of numberOfSkeletons()">
+        <div class="product-skeleton">
+          <p-skeleton [width]="'100%'" [height]="'250px'" ></p-skeleton>
+          <p-skeleton [width]="'80%'" [height]="'20px'" styleClass="title-skeleton"></p-skeleton>
+          <p-skeleton [width]="'60%'" [height]="'20px'" styleClass="rating-skeleton"></p-skeleton>
+          <p-skeleton [width]="'40%'" [height]="'30px'" styleClass="price-skeleton"></p-skeleton>
+        </div>
+      </ng-container>
+    </ng-container>
+
+    <app-product-card *ngFor="let product of (bestSellers$ | async)" [product]="product"></app-product-card>
+  </div>
+</div>

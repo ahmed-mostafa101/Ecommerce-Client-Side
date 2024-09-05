@@ -1,0 +1,154 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.container .left-side,
+.container .right-side {
+  display: flex;
+  justify-content: center;
+}
+
+.left-side .login-box {
+  width: 80%;
+  padding: 20px;
+  border: var(--main-border);
+  box-shadow: var(--primary-box-shadow);
+  border-radius: var(--main-border-radius);
+  background-color: var(--primary-bg-color);
+}
+
+.login-box .title {
+  color: var(--primary-text-color);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.login-box .primary-input {
+  margin-top: 15px;
+}
+
+.login-box .error-box {
+  margin-top: 4px;
+  color: #d9534f;
+}
+
+.login-box .options {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.options .remember {
+  display: flex;
+  column-gap: 2px;
+  align-items: center;
+}
+
+.remember input {
+  cursor: pointer;
+}
+
+.remember label {
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--primary-text-color);
+}
+
+.options .forgot {
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  margin: 15px 0 10px;
+}
+
+.login-box .register {
+  color: var(--primary-text-color);
+  font-size: 14px;
+}
+
+.register a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 2px;
+  cursor: pointer;
+}
+
+.login-box .other-way {
+  border-radius: var(--main-border-radius);
+  color: var(--primary-text-color);
+  border: var(--main-border);
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.other-way img {
+  width: 15px;
+  margin-right: 2px;
+}
+
+.right-side img {
+  width: 70%;
+  opacity: 0.4;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0 0 0 / 0.6);
+}
+
+.overlay .spinner {
+  padding: 30px 60px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-text-color);
+  border-radius: var(--main-border-radius);
+  background-color: var(--primary-bg-color);
+}
+
+.spinner i {
+  margin-right: 10px;
+}
+
+
+@media (max-width: 992px) {
+  .left-side .login-box {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+  .left-side .login-box {
+    width: 80%;
+  }
+  .right-side img {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .left-side .login-box {
+    width: 100%;
+  }
+}

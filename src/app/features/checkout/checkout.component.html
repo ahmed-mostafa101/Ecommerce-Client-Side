@@ -1,0 +1,190 @@
+<div class="container">
+  <div class="checkout-process">
+    <p-stepper orientation="vertical">
+        <p-stepperPanel header="Address">
+            <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
+                <form [formGroup]="checkoutForm">
+                  <div class="box">
+                    <div class="primary-input">
+                      <div class="input-box">
+                        <input type="text" id="country" formControlName="country" placeholder=" ">
+                        <label for="country">Country</label>
+                      </div>
+                      <div class="error-box" *ngIf="checkoutForm.get('country')?.touched && checkoutForm.get('country')?.invalid">
+                        <small>*Country is required .</small>
+                      </div>
+                    </div>
+
+                    <div class="primary-input">
+                      <div class="input-box">
+                        <input type="text" id="city" formControlName="city" placeholder=" ">
+                        <label for="city">City</label>
+                      </div>
+                      <div class="error-box" *ngIf="checkoutForm.get('city')?.touched && checkoutForm.get('city')?.invalid">
+                        <small>*City is required field.</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="box">
+                    <div class="primary-input">
+                      <div class="input-box">
+                        <input type="text" id="street" formControlName="street" placeholder=" ">
+                        <label for="street">Street</label>
+                      </div>
+                      <div class="error-box" *ngIf="checkoutForm.get('street')?.touched && checkoutForm.get('street')?.invalid">
+                        <small>*Street is required.</small>
+                      </div>
+                    </div>
+                    <div class="primary-input">
+                      <div class="input-box">
+                        <input type="text" id="postcode" formControlName="postcode" placeholder=" ">
+                        <label for="postcode">Postcode</label>
+                      </div>
+                      <div class="error-box" *ngIf="paymentForm.get('postcode')?.touched && paymentForm.get('postcode')?.invalid">
+                        <small>*postcode is required.</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="box">
+                    <div class="primary-input">
+                      <div class="input-box">
+                        <input type="text" id="fullName" formControlName="fullName" placeholder=" ">
+                        <label for="fullName">Full Name</label>
+                      </div>
+                      <div class="error-box" *ngIf="checkoutForm.get('fullName')?.touched && checkoutForm.get('fullName')?.invalid">
+                        <small>*Name is required.</small>
+                      </div>
+                    </div>
+                    <div class="primary-input">
+                      <div class="input-box">
+                        <input type="tel" id="phone" formControlName="phoneNumber" placeholder=" ">
+                        <label for="phone">Phone Number</label>
+                      </div>
+                      <div class="error-box" *ngIf="checkoutForm.get('phoneNumber')?.touched && checkoutForm.get('phoneNumber')?.invalid">
+                        <small>*Phone number is required.</small>
+
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="actions">
+                  <p-button [disabled]="!checkoutForm.valid" label="Next" (onClick)="nextCallback.emit()" />
+                </div>
+            </ng-template>
+        </p-stepperPanel>
+
+        <p-stepperPanel header="Payment">
+            <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback" let-index="index">
+              <form [formGroup]="paymentForm">
+                <div class="box">
+                  <div class="primary-input">
+                    <div class="input-box">
+                      <input type="text" id="cardName" formControlName="cardName" placeholder=" ">
+                      <label for="cardName">Full name (as displayed on card)</label>
+                    </div>
+                    <div class="error-box" *ngIf="paymentForm.get('cardName')?.touched && paymentForm.get('cardName')?.invalid">
+                      <small>*Card name is required.</small>
+                    </div>
+                  </div>
+                  <div class="primary-input">
+                    <div class="input-box">
+                      <input type="text" id="cardNumber" formControlName="cardNumber" placeholder=" ">
+                      <label for="cardNumber">Card number</label>
+                    </div>
+                    <div class="error-box" *ngIf="paymentForm.get('cardNumber')?.touched && paymentForm.get('cardNumber')?.invalid">
+                      <small>*Card number is required.</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="box">
+                  <div class="primary-input">
+                    <div class="input-box">
+                      <input type="text" id="cvc" formControlName="cvc" placeholder=" ">
+                      <label for="cvc">CVC</label>
+                    </div>
+                    <div class="error-box" *ngIf="paymentForm.get('cvc')?.touched && paymentForm.get('cvc')?.invalid">
+                      <small>*Card verification code is required.</small>
+                    </div>
+                  </div>
+                  <div class="primary-input">
+                    <div class="input-box">
+                      <input type="text" id="expiryDate" formControlName="expiryDate" placeholder=" ">
+                      <label for="expiryDate">Expiry date</label>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <div class="actions">
+                <p-button label="Back" severity="secondary" (onClick)="prevCallback.emit()" />
+                <p-button [disabled]="!paymentForm.valid" label="Next" (onClick)="nextCallback.emit()" />
+              </div>
+            </ng-template>
+        </p-stepperPanel>
+
+        <p-stepperPanel header="Final">
+          <ng-template pTemplate="content" let-prevCallback="prevCallback" let-nextCallback="nextCallback" let-index="index">
+            <p class="alert">
+              Please review your order details carefully. Ensure your shipping
+              address and payment information are correct. By clicking "Send Order"
+              you confirm that all the information provided is accurate and that you
+              agree to the terms and conditions of our service.
+            </p>
+            <div class="actions">
+              <p-button label="Back" severity="secondary" (onClick)="prevCallback.emit()" />
+              <p-button (onClick)="sendOrder()" label="Send Order" />
+            </div>
+          </ng-template>
+        </p-stepperPanel>
+    </p-stepper>
+  </div>
+
+  <ng-container *ngIf="cartObs$ | async as cart" >
+    <div class="summary">
+      <p class="title">Checkout process</p>
+      <div class="box">
+        <p class="key">Original price</p>
+        <p class="value">${{cart.originalCost.toFixed(2)}}</p>
+      </div>
+      <div class="box">
+        <p class="key">Savings</p>
+        <p class="savings">-${{cart.savings.toFixed(2)}}</p>
+      </div>
+      <div class="box">
+        <p class="key">Shipping costs</p>
+        <p class="value">${{cart.shippingCost.toFixed(2)}}</p>
+      </div> <hr>
+      <div class="box total-cost">
+        <p >Total</p>
+        <p >${{cart.totalCost.toFixed(2)}}</p>
+      </div>
+
+      <div scrollTo class="continue" routerLink="/product-list">
+        Continue Shopping
+        <i class="fa-solid fa-arrow-right-long"></i>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div *ngIf="displayPopup" class="overlay">
+  <div class="popup">
+    <div *ngIf="loading">
+      <div class="spinner">
+        <i class="fa-solid fa-sync fa-spin"></i> Please wait...
+      </div>
+    </div>
+
+    <div *ngIf="!loading" class="success">
+      <i (click)="closePopup()" class="fa-solid fa-xmark close"></i>
+      <img src="images/icons/done.png">
+      <p>
+        The order has been sent successfully. Now you can follow the
+        status of the order in your orders list.
+      </p>
+      <button (click)="goToOrders()" pRipple class="primary-btn">Show orders Now!</button>
+    </div>
+  </div>
+</div>

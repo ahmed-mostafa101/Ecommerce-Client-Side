@@ -1,0 +1,30 @@
+<div class="product">
+  <img scrollTo [scrollY]="0" [routerLink]="['/product-showcase', product._id]"
+    [src]="product.thumbnail" [alt]="product.title" decoding="async"
+  />
+  <div class="badge-fav">
+    <div class="discount-badge" *ngIf="product.discountPercentage >= 15">
+      Up to {{product.discountPercentage.toFixed(0)}}% off
+    </div>
+    <i pRipple class="fa-regular fa-heart fav" title="Add to favorites"></i>
+  </div>
+  <p scrollTo [scrollY]="0" [routerLink]="['/product-showcase', product._id]"  class="title">{{product.title}}</p>
+  <div class="rate">
+    <i *ngFor="let _ of (product.rating | rating).full" class="fa-solid fa-star" style="color: #FFD43B;"></i>
+    <i *ngIf="(product.rating | rating).half" class="fa-solid fa-star-half-stroke" style="color: #FFD43B;"></i>
+    <i *ngFor="let _ of (product.rating | rating).empty" class="fa-regular fa-star" style="color: #FFD43B;"></i>
+    <span class="rate-value">{{(product.rating | rating).rate}}</span>
+    <span class="reviews-number">({{product.reviews.length + 400}})</span>
+  </div>
+  <div class="price-cart">
+    <div>
+      <span class="price old">${{product.price}}</span>
+      <span class="price">${{newPrice}}</span>
+    </div>
+    <button pRipple title="Add to cart" class="primary-btn" (click)="addToCart(product._id)">
+      <i class="fa-solid fa-cart-plus"></i> Add to cart
+    </button>
+  </div>
+</div>
+
+<p-toast />

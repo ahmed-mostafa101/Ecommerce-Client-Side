@@ -1,0 +1,56 @@
+.products-list {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+:host ::ng-deep .p-skeleton {
+  margin-bottom: 10px;
+  background-color: var(--primary-bg-color);
+}
+
+:host ::ng-deep .p-skeleton::after {
+  background-image: linear-gradient(
+    90deg,
+    rgba(224, 224, 224, 0) 0%,
+    rgba(147, 147, 147, 0.16) 50%,
+    rgba(224, 224, 224, 0) 100%
+  );
+}
+
+:host ::ng-deep .p-paginator {
+  margin-top: 30px;
+  background-color: transparent;
+}
+
+:host ::ng-deep .p-paginator button {
+  min-width: 35px;
+  height: 35px;
+  margin-right: 5px;
+}
+
+
+@media (max-width: 1200px) {
+  .products-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .products-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10;
+  }
+}
+
+@media (max-width: 576px) {
+  .products-list {
+    grid-template-columns: 1fr;
+  }
+  :host ::ng-deep .p-paginator button {
+    min-width: 30px;
+    height: 30px;
+    margin-right: 2px;
+  }
+}

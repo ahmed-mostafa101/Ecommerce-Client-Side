@@ -1,0 +1,197 @@
+
+<div class="container">
+
+  <div class="product-showcase">
+    <div class="images-box">
+      <div class="other-images">
+        <img *ngFor="let img of product.images" [src]="img" [alt]="product.title"
+              decoding="async" (mouseover)="onHoverImage(img)">
+      </div>
+      <img [src]="currentImage" [alt]="product.title">
+    </div>
+    <div class="details-box">
+      <div [ngClass]="['status-badge', product.availabilityStatus.slice(0, 3).toLowerCase()]">
+        {{product.availabilityStatus}}
+      </div>
+      <p class="title">{{product.title}}</p>
+      <div class="rate">
+        <i *ngFor="let _ of (product.rating | rating).full" class="fa-solid fa-star" style="color: #FFD43B;"></i>
+        <i *ngIf="(product.rating | rating).half" class="fa-solid fa-star-half-stroke" style="color: #FFD43B;"></i>
+        <i *ngFor="let _ of (product.rating | rating).empty" class="fa-regular fa-star" style="color: #FFD43B;"></i>
+        <span class="rate-value">{{(product.rating | rating).rate}}</span>
+        <a href="" class="reviews-number">{{product.reviews.length + 400}} Reviews</a>
+      </div>
+      <div class="price-box">
+        <span class="price old">${{product.price}}</span>
+        <span class="price">${{newPrice}}</span>
+      </div>
+      <div class="actions">
+        <button pRipple class="secondary-btn fav">
+          <i class="fa-regular fa-heart fav"></i> Add to favorites
+        </button>
+        <button pRipple class="primary-btn" (click)="addToCart(product._id)">
+          <i class="fa-solid fa-cart-plus"></i> Add to cart
+        </button>
+        <div class="quantity-box">
+          <label for="quantity">
+            Quantity
+            <i class="fa-solid fa-circle-info info"></i>
+            <div class="stock-info">Remaining stock is <span>{{product.stock}}</span> items</div>
+          </label>
+          <input type="number" class="quantity-input" id="quantity" value="1" min="1" [max]="product.stock" />
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <img src="images/visuals/cash.png" alt="" />
+          <p>Cash on Delivery</p>
+        </div>
+        <div class="feature">
+          <img src="images/visuals/return.png" alt="" />
+          <p>Days Returnable</p>
+        </div>
+        <div class="feature">
+          <img src="images/visuals/deliver.png" alt="" />
+          <p>Free Delivery</p>
+        </div>
+        <div class="feature">
+          <img src="images/visuals/secure.png" alt="" />
+          <p>Secure transaction</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="more-details-tab">
+    <div class="tab-headers">
+      <div class="tab-header" [class.active]="selectedTab === 'description'" (click)="selectTab('description')">
+        Product description
+      </div>
+      <div class="tab-header" [class.active]="selectedTab === 'reviews'" (click)="selectTab('reviews')">
+        Reviews
+      </div>
+      <div class="tab-header" [class.active]="selectedTab === 'warranty'" (click)="selectTab('warranty')">
+        Warranty
+      </div>
+    </div>
+
+    <div class="tab-panels">
+      <div id="description-section" class="tab-panel _1" *ngIf="selectedTab === 'description'">
+        <div class="left-side">
+          <p>{{product.description}}</p>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem error cum porro,
+            quo id quod doloremque unde tempore vero laudantium placeat molestiae perspiciatis
+            consequuntur est, ullam cupiditate veritatis quisquam excepturi.
+          </p>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem error cum porro,
+            quo id quod doloremque unde tempore vero laudantium placeat molestiae perspiciatis
+            consequuntur est, ullam cupiditate veritatis quisquam excepturi.
+          </p>
+        </div>
+        <div class="right-side">
+          <div class="title">Product meta data</div>
+          <div class="box">
+            <p>QR code</p>
+            <img [src]="product.meta.qrCode" alt="qrcode">
+          </div>
+          <div class="box">
+            <p>Creation date</p>
+            <p class="value">{{product.meta.createdAt | date:'fullDate'}}</p>
+          </div>
+          <div class="box">
+            <p>Last update</p>
+            <p class="value">{{product.meta.updatedAt | date:'fullDate'}}</p>
+          </div>
+          <div class="box">
+            <p>Brand</p>
+            <p class="vale">{{product.brand}}</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="tab-panel _2" *ngIf="selectedTab === 'reviews'">
+        <p>Reviews content goes here...</p>
+      </div>
+      <div class="tab-panel _3" *ngIf="selectedTab === 'warranty'">
+        <p>Warranty content goes here...</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+<!-- <div class="product-box">
+  <a id="Zoom-1" class="MagicZoom"
+      [href]="product.images[0]"
+      [attr.data-zoom-image-2x]="product.images[0]"
+      [attr.data-image-2x]="product.images[0]"
+    >
+      <img
+        [src]="product.images[0]"
+        [srcset]="product.images[0] + ' 2x'"
+        [alt]="product.title"
+      />
+    </a>
+    <div class="images-box">
+      <div class="other-images">
+        <img *ngFor="let img of product.images"
+              [src]="img"
+              alt="product.title"
+              (mouseover)="onHoverImage(img)">
+      </div>
+      <img [src]="currentImage" [alt]="product.title">
+    </div>
+
+    <div class="details">
+      <p class="title">{{ product.title }}</p>
+      <p class="brand">Brand: {{ product.brand }}</p>
+      <span class="rating-text">{{ product.rating }}</span>
+      <span class="rating-stars">
+        <i class="fa-solid fa-star" style="color: #ffd43b" *ngFor="let star of (product.rating | rating).full"></i>
+        <i class="fa-solid fa-star-half-stroke" style="color: #ffd43b" *ngIf="(product.rating | rating).half"></i>
+        <i class="fa-regular fa-star" *ngFor="let star of (product.rating | rating).empty"></i>
+      </span>
+      <span class="price old">${{ product.price }}</span>
+      <span class="price"
+        >${{
+          getNewPrice(product.price, product.discountPercentage)
+        }}</span
+      >
+      <p class="description">{{ product.description }}</p>
+
+      <div class="features">
+        <div class="feature">
+          <img src="images/cash.png" alt="" />
+          <p>Cash on Delivery</p>
+        </div>
+        <div class="feature">
+          <img src="images/return.png" alt="" />
+          <p>Days Returnable</p>
+        </div>
+        <div class="feature">
+          <img src="images/deliver.png" alt="" />
+          <p>Free Delivery</p>
+        </div>
+        <div class="feature">
+          <img src="images/secure.png" alt="" />
+          <p>Secure transaction</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <app-related-products [productCategory]="product.category"></app-related-products>
+
+  <hr>
+  <app-product-review [product]="product"></app-product-review>
+
+-->

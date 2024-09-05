@@ -1,0 +1,94 @@
+.container {
+  min-height: 500px;
+}
+
+.container .table-box {
+  height: fit-content;
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--main-border-radius);
+  box-shadow: var(--primary-box-shadow);
+}
+
+.table-box table {
+  width: 100%;
+  min-width: 1000px;
+  overflow-x: scroll;
+  border-collapse: collapse;
+  color: var(--primary-text-color);
+  background-color: var(--primary-bg-color);
+}
+
+table thead {
+  background-color: #0000001a;
+}
+
+table thead th {
+  text-align: left;
+  padding: 15px 25px;
+}
+
+table tbody tr:not(:last-of-type) {
+  border-bottom: var(--main-border);
+}
+
+table tbody td {
+  padding: 25px;
+}
+
+td .badge {
+  border-radius: var(--main-border-radius);
+  display: inline-block;
+  text-align: center;
+  font-weight: 600;
+  width: 100px;
+  padding: 5px;
+}
+
+.pending {
+  color: var(--green-badge-color);
+  background-color: var(--green-badge-bg-color);
+}
+
+.confirmed {
+  color: var(--blue-badge-color);
+  background-color: var(--blue-badge-bg-color);
+}
+
+.canceled {
+  color: var(--red-badge-color);
+  background-color: var(--red-badge-bg-color);
+}
+
+.container .no-orders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+}
+
+.no-orders img {
+  opacity: 0.4;
+  margin-bottom: 20px;
+}
+
+.no-orders div {
+  color: var(--primary-text-color);
+  max-width: 450px;
+  padding: 0 20px;
+}
+
+.no-orders div a {
+  margin-left: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.no-orders div a:hover {
+  color: var(--link-hover-color);
+}
+
+
+

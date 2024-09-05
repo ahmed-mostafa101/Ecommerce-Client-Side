@@ -1,0 +1,209 @@
+:root {
+  --primary-bg-color: #FFFFFF;
+  --secondary-bg-color: #F9FAFB;
+  --primary-color: #1A56DB;
+  --secondary-color: #1f54c6;
+  --primary-text-color: #111928;
+  --secondary-text-color: #6B7280;
+  --red-badge-bg-color: #FDE8E8;
+  --red-badge-color: #9B1C1C;
+  --green-badge-bg-color: #DEF7EC;
+  --green-badge-color: #03543F;
+  --blue-badge-bg-color: #dee9f7;
+  --blue-badge-color: #033454;
+  --yellow-badge-bg-color: #f39c1233;
+  --yellow-badge-color: #a76700;
+  --fav-bg-color: #F3F4F6;
+  --input-bg-color: #F9FAFB;
+  --select-bg-color: #F3F4F6;
+  --main-border: 1px solid #E5E7EB;
+  --main-border-radius: 8px;
+  --main-transition: 0.3s linear;
+  --link-hover-color: #de7921;
+  --primary-box-shadow: 0 0 10px #0000001a;
+  --secondary-box-shadow: 0 0 5px #1A56DB;
+}
+
+.dark-mode {
+  --primary-bg-color: #1f2a37;
+  --secondary-bg-color: #111928;
+  --primary-color: #1C64F2;
+  --secondary-color: #1c64f2e6;
+  --primary-text-color: #FFFFFF;
+  --secondary-text-color: #9CA3AF;
+  --red-badge-bg-color: #771D1D;
+  --red-badge-color: #F8B4B4;
+  --green-badge-bg-color: #014737;
+  --green-badge-color: #84e1bc;
+  --blue-badge-bg-color: #31435b;
+    --blue-badge-color: #f0f7ff;
+  --yellow-badge-bg-color: #f39c1266;
+  --yellow-badge-color: #dea448;
+  --fav-bg-color: #374151;
+  --input-bg-color: #374151;
+  --select-bg-color: #313947;
+  --main-border: 1px solid #4B5563;
+  --main-border-radius: 8px;
+  --main-transition: 0.3s linear;
+  --link-hover-color: #de7921;
+  --primary-box-shadow: 0 0 20px #00000080;
+  --secondary-box-shadow: 0 0 5px #548aff;
+}
+
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background-color: var(--secondary-bg-color);
+}
+
+
+
+/* ________________________________________ Components _______________________________________________ */
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 30px;
+  max-width: 1300px;
+}
+
+@media (max-width: 992px) {
+  .container {
+    padding: 0 20px;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 10px;
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+
+.primary-btn {
+  background-color: var(--primary-color);
+  border-radius: var(--main-border-radius);
+  border: var(--main-border);
+  color: #ffffff;
+  cursor: pointer;
+  padding: 6px;
+  text-align: center;
+  font-size: 14px;
+  overflow: hidden;
+  transition: var(--transition-duration);
+}
+
+.secondary-btn {
+  background-color: transparent;
+  border-radius: var(--main-border-radius);
+  border: var(--main-border);
+  color: #8a8a8a;
+  cursor: pointer;
+  padding: 6px;
+  text-align: center;
+  font-size: 14px;
+  overflow: hidden;
+  transition: var(--transition-duration);
+}
+
+
+.primary-input .input-box {
+  position: relative;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  color: var(--secondary-text-color);
+  background-color: transparent;
+  border: var(--main-border);
+  border-radius: var(--main-border-radius);
+  transition: var(--main-transition);
+}
+
+.input-box label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  color: var(--secondary-text-color);
+  transition: var(--main-transition);
+}
+
+.input-box input:focus {
+  border-color: var(--primary-color);
+}
+
+.input-box input:focus + label,
+.input-box input:not(:placeholder-shown) + label {
+  top: 0;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 12px;
+  padding: 0 5px;
+  color: var(--primary-color);
+  background-color: var(--primary-bg-color);
+}
+
+.primary-input .error-box {
+  margin: 2px 0 2px 2px;
+  color: #d9534f;
+}
+
+
+
+
+.or {
+  position: relative;
+  height: 1px;
+  margin: 25px 0;
+  background-color: var(--secondary-text-color);
+}
+
+.or::after {
+  content: 'or';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 15px;
+  color: var(--secondary-text-color);
+  background-color: var(--primary-bg-color);
+}
+
+
+
+input:-webkit-autofill,
+select:-webkit-autofill,
+textarea:-webkit-autofill {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-moz-autofill,
+select:-moz-autofill,
+textarea:-moz-autofill {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+

@@ -1,0 +1,249 @@
+.header-level-one {
+  height: 40px;
+  border-bottom: var(--main-border);
+  background-color: var(--secondary-bg-color);
+}
+
+.header-level-one .container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container .offer {
+  color: var(--primary-text-color);
+}
+
+.offer a {
+  margin-left: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--primary-text-color);
+  transition: var(--main-transition);
+}
+
+.offer a:hover {
+  color: var(--link-hover-color);
+}
+
+.container .mode {
+  background-color: var(--input-bg-color);
+  border-radius: var(--main-border-radius);
+  color: var(--primary-text-color);
+  border: var(--main-border);
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.header-level-two {
+  height: 70px;
+  border-bottom: var(--main-border);
+  background-color: var(--primary-bg-color);
+}
+
+.header-level-two .container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container .left-content {
+  width: 60%;
+  display: flex;
+  column-gap: 40px;
+}
+
+.left-content .logo {
+  color: var(--primary-text-color);
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.logo i {
+  font-size: 35px;
+  color: var(--primary-color);
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.search-box i {
+  position: absolute;
+  left: 10px;
+  color: var(--primary-text-color);
+}
+
+.search-box input {
+  height: 42px;
+  flex: 1;
+  outline: none;
+  padding: 10px 80px 10px 40px;
+  border-radius: var(--main-border-radius);
+  background-color: var(--input-bg-color);
+  color: var(--secondary-text-color);
+  border: var(--main-border);
+  transition: var(--main-transition);
+}
+
+.search-box input:focus {
+  box-shadow: var(--secondary-box-shadow);
+}
+
+.search-box button {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  padding: 0 15px;
+  border: none;
+}
+
+.header-level-two .right-content {
+  display: flex;
+  column-gap: 20px;
+}
+
+.right-content .box {
+  color: var(--primary-text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.box i {
+  font-size: 35px;
+}
+
+.box .title {
+  font-weight: 600;
+}
+
+.box.cart {
+  position: relative;
+}
+
+:host ::ng-deep .p-badge {
+  background: var(--primary-color);
+  color: #ffffff;
+  min-width: 1.2rem;
+  height: 1.2rem;
+  line-height: 1.2rem;
+}
+
+.right-content .account {
+  position: relative;
+  cursor: pointer;
+}
+
+.account img {
+  width: 35px;
+  height:35px;
+  border-radius: 50%;
+  border: 2px solid var(--secondary-text-color);
+}
+
+.account .show {
+  position: absolute;
+  bottom: -205px;
+  right: -5px;
+  opacity: 0;
+  z-index: -10;
+  padding: 20px;
+  text-align: center;
+  box-shadow: var(--primary-box-shadow);
+  background-color: var(--primary-bg-color);
+  transition: var(--main-transition);
+}
+
+.show img {
+  width: 60px;
+  height: 60px;
+}
+
+.show .name {
+  color: var(--primary-text-color);
+  margin: 5px 0;
+}
+
+.show .email {
+  color: var(--secondary-text-color);
+  margin-bottom: 20px;
+}
+
+.show .logout {
+  background-color: #aa0000;
+  color: #fff;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: var(--main-border-radius);
+}
+
+.show .logout:hover {
+  background-color: #c20000;
+}
+
+.account .show.active {
+  opacity: 1;
+  z-index: 10;
+  bottom: -225px;
+}
+
+.mobile-search {
+  background-color: var(--primary-bg-color);
+  border-bottom: var(--main-border);
+  padding: 5px 0;
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .left-content .logo {
+    font-size: 25px;
+  }
+  .left-content .logo i {
+    font-size: 30px;
+  }
+  .header-level-two .right-content {
+    column-gap: 10px;
+  }
+  .right-content .box i {
+    font-size: 30px;
+  }
+  .box .title {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 790px) {
+  .header-level-one .offer {
+    font-size: 14px;
+  }
+  .header-level-two .left-content {
+    width: fit-content;
+  }
+  .left-content .search-box {
+    display: none;
+  }
+  .mobile-search {
+    display: block;
+  }
+}
+
+@media (max-width: 576px) {
+  .header-level-one .container {
+    justify-content: flex-end;
+  }
+  .header-level-one .offer {
+    display: none;
+  }
+  .box .title {
+    font-size: 12px;
+  }
+}
+

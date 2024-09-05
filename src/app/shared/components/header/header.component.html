@@ -1,0 +1,73 @@
+<div class="header-level-one">
+  <div class="container">
+    <p class="offer">
+      Get 50% off on Member Exclusive Month |
+      <a routerLink="/products-list">Shop Now</a>
+    </p>
+    <div pRipple class="mode" id="mode" (click)="toggleMode()">
+      <i *ngIf="darkMode" title="Switch to light mode" class="fa-solid fa-cloud-sun"></i>
+      <i *ngIf="lightMode" title="Switch to dark mode" class="fa-solid fa-cloud-moon"></i>
+    </div>
+  </div>
+</div>
+
+<div class="header-level-two">
+  <div class="container">
+    <div class="left-content">
+      <a class="logo" href="">
+        <i class="fa-brands fa-shopify"></i>tore
+      </a>
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input (keyup.enter)="search()" id="search-input" type="text" placeholder="Search for products..."/>
+        <button pRipple class="primary-btn" (click)="search()">Search</button>
+      </div>
+    </div>
+    <div class="right-content">
+      <div class="box cart" title="Shopping cart" routerLink="/cart">
+        <ng-container *ngIf="cart$ | async as cart; else showNoBadge">
+          <i pBadge value="{{cart.totalQuantity}}" class="material-symbols-outlined">shopping_cart</i>
+        </ng-container>
+        <ng-template #showNoBadge>
+          <i class="material-symbols-outlined">shopping_cart</i>
+        </ng-template>
+        <span class="title">My Cart</span>
+      </div>
+      <div class="box" title="Show orders" routerLink="/orders-list">
+        <i class="material-symbols-outlined">package_2</i>
+        <span class="title">Orders</span>
+      </div>
+
+      <ng-container *ngIf="userProfile$ | async as userProfile; else showSignIn">
+        <div class="account" (click)="toggleDropdown()" title="Account">
+          <img [src]="userProfile.profileImage">
+
+          <div class="show"  [class.active]="isDropdownVisible">
+            <img [src]="userProfile.profileImage">
+            <p class="name">{{userProfile.firstName}} {{userProfile.lastName}}</p>
+            <p class="email">{{userProfile.email}}</p>
+            <div pRipple (click)="logout()" class="logout">Log Out</div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-template #showSignIn>
+        <div class="box" title="Sign In" routerLink="/login">
+          <i class="material-symbols-outlined">login</i>
+          <span class="title">Sign In</span>
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+</div>
+
+<div class="mobile-search">
+  <div class="container">
+    <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input (keyup.enter)="search()" id="search-input" type="text" placeholder="Search for products..."/>
+      <button class="primary-btn" (click)="search()">Search</button>
+    </div>
+  </div>
+</div>

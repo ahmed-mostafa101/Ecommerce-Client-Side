@@ -1,0 +1,108 @@
+<div class="nav">
+  <div class="container">
+    <ul class="main-links">
+      <li (click)="categoryProducts('')">Shopping</li>
+      <li (click)="showMenu()">
+        Categories <i class="fa-solid fa-angle-down"></i>
+        <div class="drop-menu" id="drop-menu">
+          <ul class="sub-links">
+            <li (click)="categoryProducts('kitchen-accessories')">
+              <i class="fa-solid fa-kitchen-set"></i> Kitchen Accessories
+            </li>
+            <li (click)="categoryProducts('mobile-accessories')">
+              <i class="fa-solid fa-mobile"></i> Mobile Accessories
+            </li>
+            <li (click)="categoryProducts('sports-accessories')">
+              <i class="fa-solid fa-basketball-ball"></i> Sports Accessories
+            </li>
+            <li (click)="categoryProducts('womens-jewellery')">
+              <i class="fa-solid fa-gem"></i> Womens Jewellery
+            </li>
+            <li (click)="categoryProducts('womens-dresses')">
+              <i class="fa-solid fa-person-dress"></i> Womens Dresses
+            </li>
+            <li (click)="categoryProducts('womens-watches')">
+              <i class="material-symbols-outlined">watch</i> Womens Watches
+            </li>
+            <li (click)="categoryProducts('womens-shoes')">
+              <i class="material-symbols-outlined">steps</i> Womens Shoes
+            </li>
+            <li (click)="categoryProducts('womens-bags')">
+              <i class="fa-solid fa-bag-shopping"></i> Womens Bags
+            </li>
+          </ul>
+          <ul class="sub-links">
+            <li (click)="categoryProducts('tops')">
+              <i class="fa-solid fa-shirt"></i> Tops
+            </li>
+            <li (click)="categoryProducts('beauty')">
+              <i class="material-symbols-outlined">health_and_beauty</i> Beauty
+            </li>
+            <li (click)="categoryProducts('laptops')">
+              <i class="fa-solid fa-laptop"></i> Laptops
+            </li>
+            <li (click)="categoryProducts('tablets')">
+              <i class="fa-solid fa-tablet-alt"></i> Tablets
+            </li>
+            <li (click)="categoryProducts('skin-care')">
+              <i class="fa-solid fa-spa"></i> Skin Care
+            </li>
+            <li (click)="categoryProducts('motorcycle')">
+              <i class="fa-solid fa-motorcycle"></i> Motorcycle
+            </li>
+            <li (click)="categoryProducts('sunglasses')">
+              <i class="fa-solid fa-glasses"></i> Sunglasses
+            </li>
+            <li (click)="categoryProducts('home-decoration')">
+              <i class="fa-solid fa-couch"></i> Home Decoration
+            </li>
+          </ul>
+          <ul class="sub-links">
+            <li (click)="categoryProducts('smartphones')">
+              <i class="fa-solid fa-mobile-alt"></i> Smartphones
+            </li>
+            <li (click)="categoryProducts('mens-watches')">
+              <i class="material-symbols-outlined">watch_screentime</i> Mens Watches
+            </li>
+            <li (click)="categoryProducts('mens-shirts')">
+              <i class="material-symbols-outlined">laundry</i> Mens Shirts
+            </li>
+            <li (click)="categoryProducts('mens-shoes')">
+              <i class="material-symbols-outlined">podiatry</i> Mens Shoes
+            </li>
+            <li (click)="categoryProducts('furniture')">
+              <i class="fa-solid fa-bed"></i> Furniture
+            </li>
+            <li (click)="categoryProducts('groceries')">
+              <span class="material-symbols-outlined">grocery</span> Groceries
+            </li>
+            <li (click)="categoryProducts('fragrances')">
+              <i class="fa-solid fa-bottle-droplet"></i> Fragrances
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li routerLink="/best-sellers">Best Sellers</li>
+      <li>Top Deals</li>
+      <li>New Releases</li>
+    </ul>
+
+    <div class="mobile-menu">
+      <i class="fa-solid fa-bars"></i>
+      <div class="menu-list"></div>
+    </div>
+
+    <div class="sort-box">
+      <label for="sort">Sort by :</label>
+      <select id="sort" (change)="sort($event)">
+        <option value="" order="">featured</option>
+        <option value="title" order="asc">title [a-z]</option>
+        <option value="title" order="desc">title [z-a]</option>
+        <option value="price" order="asc">price [low to high]</option>
+        <option value="price" order="desc">price [high to low]</option>
+        <span></span>
+      </select>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="container">
+  <ng-container *ngIf="cartObs$ | async as cart">
+    <div class="cart-box">
+      <div class="cart-content">
+        <div *ngIf="!cart.products.length" class="empty-cart">
+          <img src="images/visuals/empty-cart.png" alt="empty-cart">
+          <div>
+            There is no items yet | <a routerLink="/product-list">Shop now</a>
+          </div>
+        </div>
+        <div class="item" *ngFor="let product of cart.products">
+          <img decoding="async" [alt]="product.title" [src]="product.thumbnail"
+              [routerLink]="['/product-showcase', product.id]" scrollTo />
+
+          <div class="info">
+            <div class="definition">
+              <p class="product-title">{{product.title}}</p>
+              <p [routerLink]="['/product-showcase', product.id]"
+                  class="product-description" scrollTo [scrollY]="400">
+                {{ product.description }}
+              </p>
+            </div>
+            <div class="calculations">
+              <div class="quantity">
+                <div pRipple (click)="updatePlus(product.id)" class="update plus">+</div>
+                <div>{{product.quantity}}</div>
+                <div pRipple (click)="updateMinus(product.id, product.quantity)" class="update minus">-</div>
+              </div>
+              <p class="total-price">${{ (product.quantity * product.price).toFixed(2) }}</p>
+            </div>
+          </div>
+
+          <i (click)="deleteProduct(product.id, product.quantity)" class="fa-solid fa-xmark remove"></i>
+        </div>
+      </div>
+
+      <div class="to-checkout">
+        <div class="summary">
+          <p class="title">Shopping cart</p>
+          <div class="box">
+            <p class="key">Number of products</p>
+            <p class="value">{{ cart.totalProducts}}</p>
+          </div>
+          <div class="box">
+            <p class="key">Number of items</p>
+            <p class="value">{{ cart.totalQuantity}}</p>
+          </div>
+          <div class="box">
+            <p class="key">Original price</p>
+            <p class="value">${{ cart.originalCost.toFixed(2)}}</p>
+          </div>
+          <div class="box">
+            <p class="key">Savings</p>
+            <p class="savings">-${{ cart.savings.toFixed(2)}}</p>
+          </div>
+          <div class="box">
+            <p class="key">Shipping costs</p>
+            <p class="value">${{ cart.shippingCost.toFixed(2)}}</p>
+          </div> <hr>
+          <div class="box total-cost">
+            <p >Total</p>
+            <p >${{ cart.totalCost.toFixed(2)}}</p>
+          </div>
+          <button pRipple class="primary-btn" routerLink="/checkout" [disabled]="!cart.products.length">
+            Proceed to Checkout
+          </button>
+          <div class="or"></div>
+          <div class="continue" routerLink="/product-list" scrollTo>
+            Continue Shopping
+            <i class="fa-solid fa-arrow-right-long"></i>
+          </div>
+        </div>
+        <div class="primary-input gift-card">
+          <div class="input-box">
+            <input type="text" id="code" placeholder=" ">
+            <label for="code">Do you have a gift card</label>
+          </div>
+          <button pRipple class="primary-btn">Apply Code</button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
