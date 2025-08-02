@@ -1,6 +1,13 @@
-# Ecommerce Client Side Application
+# E-commerce Platform (Client Side)
+Technologies: HTML | CSS | TypeScript | Angular | REST APIs
 
-This repository contains the client-side code for an E-commerce application built using Angular. The application provides a complete online shopping experience, from browsing products to managing the cart and processing orders
+- Developed a dynamic, responsive front-end for an e-commerce platform using the Angular framework.
+- Implemented product listing with filtering, sorting, and pagination for improved user navigation.
+- Integrated JWT-based authentication and authorization to manage secure user access.
+- Built a shopping cart with add, update, remove features, real-time pricing, and checkout process.
+- Utilized Angular services to manage state and maintain a clean separation of concerns.
+- Ensured a mobile-first design and optimized application performance for better user experience.
+
 
 # Project Structure
 
