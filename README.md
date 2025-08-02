@@ -9,7 +9,7 @@ Technologies: HTML | CSS | TypeScript | Angular | REST APIs
 - Ensured a mobile-first design and optimized application performance for better user experience. 
 
 
-# Project Structure
+# Project Structure 
 
 
 ```plaintext
