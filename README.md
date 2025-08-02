@@ -6,7 +6,7 @@ Technologies: HTML | CSS | TypeScript | Angular | REST APIs
 - Integrated JWT-based authentication and authorization to manage secure user access.
 - Built a shopping cart with add, update, remove features, real-time pricing, and checkout process.
 - Utilized Angular services to manage state and maintain a clean separation of concerns.
-- Ensured a mobile-first design and optimized application performance for better user experience.
+- Ensured a mobile-first design and optimized application performance for better user experience. 
 
 
 # Project Structure
