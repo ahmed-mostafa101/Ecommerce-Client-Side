@@ -1,12 +1,12 @@
 # E-commerce Platform (Client Side)
 Technologies: HTML | CSS | TypeScript | Angular | REST APIs
 
-- Developed a dynamic, responsive front-end for an e-commerce platform using the Angular framework. 
+- Developed a dynamic, responsive front-end for an e-commerce platform using the Angular framework.
 - Implemented product listing with filtering, sorting, and pagination for improved user navigation.
 - Integrated JWT-based authentication and authorization to manage secure user access.
 - Built a shopping cart with add, update, remove features, real-time pricing, and checkout process.
 - Utilized Angular services to manage state and maintain a clean separation of concerns.
-- Ensured a mobile-first design and optimized application performance for better user experience. 
+- Ensured a mobile-first design and optimized application performance for better user experience.
 
 
 # Project Structure
